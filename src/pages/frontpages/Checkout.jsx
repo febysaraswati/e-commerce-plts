@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 
 const Checkout = () => {
-  const { cartItems, clearCart, setActivePage } = useContext(CartContext);
-  const [formData, setFormData] = useState({ name: '', phone: '', address: '', note: '' });
+  const { clearCart, setActivePage } = useContext(CartContext);
+  const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e) => {
@@ -16,13 +16,17 @@ const Checkout = () => {
     setActivePage('dashboard');
   };
 
-  // Conditional Rendering setelah submit
   if (submitted) {
     return (
-      <div style={{ textAlign: 'center', backgroundColor: '#112240', border: '1px solid #D4AF37', borderRadius: '8px', padding: '3rem', maxWidth: '600px', margin: '0 auto' }}>
-        <h2 style={{ color: '#D4AF37' }}>Pengajuan Konsultasi Berhasil!</h2>
-        <p style={{ color: '#CCD6F6' }}>Terima kasih, <strong>{formData.name}</strong>. Tim <strong>Velasolaris</strong> akan segera menghubungi Anda di nomor <strong>{formData.phone}</strong>.</p>
-        <button onClick={handleDone} style={{ padding: '0.6rem 1.5rem', backgroundColor: '#D4AF37', color: '#0A192F', border: 'none', borderRadius: '4px', fontWeight: 'bold', marginTop: '1.5rem', cursor: 'pointer' }}>
+      <div className="text-center bg-navy-card border border-gold rounded-lg p-12 max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-gold mb-4">Pengajuan Konsultasi Berhasil!</h2>
+        <p className="text-slate-200 leading-relaxed mb-6">
+          Terima kasih, <strong>{formData.name}</strong>. Tim <strong>Velasolaris</strong> akan segera menghubungi Anda di nomor <strong>{formData.phone}</strong>.
+        </p>
+        <button 
+          onClick={handleDone} 
+          className="px-6 py-3 bg-gold text-navy-dark font-bold rounded hover:bg-gold-light transition-colors"
+        >
           Kembali ke Beranda
         </button>
       </div>
@@ -30,44 +34,47 @@ const Checkout = () => {
   }
 
   return (
-    <div style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#112240', border: '1px solid #D4AF37', borderRadius: '8px', padding: '2rem' }}>
-      <h2 style={{ color: '#D4AF37', marginBottom: '1rem' }}>Formulir Permintaan Konsultasi</h2>
+    <div className="max-w-xl mx-auto bg-navy-card border border-gold rounded-lg p-8">
+      <h2 className="text-2xl font-bold text-gold mb-6">Formulir Permintaan Konsultasi</h2>
 
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', color: '#E6C200' }}>Nama Lengkap:</label>
+          <label className="block mb-1 text-gold-accent font-medium">Nama Lengkap:</label>
           <input
             type="text"
             required
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            style={{ width: '100%', padding: '0.6rem', borderRadius: '4px', border: '1px solid #D4AF37', backgroundColor: '#0A192F', color: '#FFF' }}
+            className="w-full p-2.5 rounded border border-gold bg-navy-dark text-white focus:outline-none focus:ring-2 focus:ring-gold"
           />
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', color: '#E6C200' }}>No. WhatsApp / HP:</label>
+          <label className="block mb-1 text-gold-accent font-medium">No. WhatsApp / HP:</label>
           <input
             type="tel"
             required
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-            style={{ width: '100%', padding: '0.6rem', borderRadius: '4px', border: '1px solid #D4AF37', backgroundColor: '#0A192F', color: '#FFF' }}
+            className="w-full p-2.5 rounded border border-gold bg-navy-dark text-white focus:outline-none focus:ring-2 focus:ring-gold"
           />
         </div>
 
         <div>
-          <label style={{ display: 'block', marginBottom: '5px', color: '#E6C200' }}>Alamat Lokasi Instalasi:</label>
+          <label className="block mb-1 text-gold-accent font-medium">Alamat Lokasi Instalasi:</label>
           <textarea
             required
             rows="3"
             value={formData.address}
             onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-            style={{ width: '100%', padding: '0.6rem', borderRadius: '4px', border: '1px solid #D4AF37', backgroundColor: '#0A192F', color: '#FFF' }}
+            className="w-full p-2.5 rounded border border-gold bg-navy-dark text-white focus:outline-none focus:ring-2 focus:ring-gold"
           />
         </div>
 
-        <button type="submit" style={{ padding: '0.8rem', backgroundColor: '#D4AF37', color: '#0A192F', border: 'none', borderRadius: '4px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer', marginTop: '1rem' }}>
+        <button 
+          type="submit" 
+          className="w-full py-3 bg-gold text-navy-dark font-bold text-lg rounded hover:bg-gold-light transition-colors mt-4"
+        >
           Kirim Pengajuan
         </button>
       </form>

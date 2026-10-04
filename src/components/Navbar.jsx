@@ -5,63 +5,39 @@ const Navbar = () => {
   const { cartItems, setActivePage, activePage } = useContext(CartContext);
 
   return (
-    <header style={{
-      backgroundColor: '#0A192F',
-      borderBottom: '2px solid #D4AF37',
-      padding: '1rem 2rem',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      color: '#FFFFFF'
-    }}>
+    <header className="bg-navy-dark border-b-2 border-gold px-8 py-4 flex justify-between items-center text-white shadow-md">
       <div>
-        <h2 style={{ margin: 0, color: '#D4AF37', fontSize: '1.5rem', letterSpacing: '1px' }}>
+        <h2 className="m-0 text-gold text-2xl font-bold tracking-wider">
           VELASOLARIS
         </h2>
-        <span style={{ fontSize: '0.8rem', color: '#E6C200' }}>
+        <span className="text-xs text-gold-accent">
           Solusi Energi Terintegrasi PLTS
         </span>
       </div>
 
-      <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <nav className="flex gap-4 items-center">
         <button
           onClick={() => setActivePage('dashboard')}
-          style={{
-            background: activePage === 'dashboard' ? '#D4AF37' : 'transparent',
-            color: activePage === 'dashboard' ? '#0A192F' : '#FFF',
-            border: '1px solid #D4AF37',
-            padding: '0.5rem 1rem',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold'
-          }}
+          className={`px-4 py-2 rounded font-bold border border-gold transition-colors ${
+            activePage === 'dashboard'
+              ? 'bg-gold text-navy-dark'
+              : 'bg-transparent text-white hover:bg-navy-light'
+          }`}
         >
           Katalog Paket
         </button>
 
         <button
           onClick={() => setActivePage('cart')}
-          style={{
-            background: activePage === 'cart' ? '#D4AF37' : 'transparent',
-            color: activePage === 'cart' ? '#0A192F' : '#FFF',
-            border: '1px solid #D4AF37',
-            padding: '0.5rem 1rem',
-            borderRadius: '4px',
-            cursor: 'pointer',
-            fontWeight: 'bold',
-            position: 'relative'
-          }}
+          className={`px-4 py-2 rounded font-bold border border-gold relative transition-colors ${
+            activePage === 'cart'
+              ? 'bg-gold text-navy-dark'
+              : 'bg-transparent text-white hover:bg-navy-light'
+          }`}
         >
           Konsultasi
           {cartItems.length > 0 && (
-            <span style={{
-              marginLeft: '8px',
-              backgroundColor: '#FF4D4D',
-              color: '#FFF',
-              borderRadius: '50%',
-              padding: '2px 7px',
-              fontSize: '0.75rem'
-            }}>
+            <span className="ml-2 bg-red-500 text-white rounded-full px-2 py-0.5 text-xs">
               {cartItems.length}
             </span>
           )}
@@ -69,14 +45,11 @@ const Navbar = () => {
 
         <button
           onClick={() => setActivePage('admin')}
-          style={{
-            background: activePage === 'admin' ? '#D4AF37' : 'transparent',
-            color: activePage === 'admin' ? '#0A192F' : '#E6C200',
-            border: '1px solid #E6C200',
-            padding: '0.5rem 1rem',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
+          className={`px-4 py-2 rounded border border-gold-accent transition-colors ${
+            activePage === 'admin'
+              ? 'bg-gold text-navy-dark'
+              : 'bg-transparent text-gold-accent hover:bg-navy-light'
+          }`}
         >
           Admin Mode
         </button>

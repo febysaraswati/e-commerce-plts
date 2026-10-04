@@ -4,11 +4,11 @@ import Sidebar from '../components/Sidebar';
 
 const AdminLayout = ({ children }) => {
   return (
-    <div style={{ backgroundColor: '#0A192F', minHeight: '100vh', color: '#FFF' }}>
+    <div className="bg-navy-dark min-h-screen text-white">
       <Navbar />
-      <div style={{ display: 'flex' }}>
+      <div className="flex">
         <Sidebar />
-        <main style={{ flex: 1, padding: '2rem' }}>
+        <main className="flex-1 p-8">
           {children}
         </main>
       </div>

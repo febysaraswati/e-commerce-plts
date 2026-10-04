@@ -11,66 +11,36 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div style={{
-      backgroundColor: '#112240',
-      border: '1px solid #D4AF37',
-      borderRadius: '8px',
-      padding: '1.5rem',
-      color: '#FFFFFF',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      boxShadow: '0 4px 10px rgba(0,0,0,0.3)'
-    }}>
+    <div className="bg-navy-card border border-gold rounded-lg p-6 text-white flex flex-col justify-between shadow-lg hover:shadow-xl transition-shadow">
       <div>
-        <span style={{
-          backgroundColor: '#D4AF37',
-          color: '#0A192F',
-          padding: '4px 8px',
-          borderRadius: '4px',
-          fontSize: '0.75rem',
-          fontWeight: 'bold'
-        }}>
+        <span className="bg-gold text-navy-dark px-2 py-1 rounded text-xs font-bold inline-block mb-2">
           {product.category}
         </span>
-        <h3 style={{ color: '#F4E071', marginTop: '10px' }}>{product.name}</h3>
-        <h2 style={{ color: '#D4AF37', margin: '10px 0' }}>Rp {product.priceDisplay}</h2>
-        <p style={{ fontSize: '0.9rem', color: '#8892B0' }}>
-          ⚡ Estimasi harian: <strong>{product.dailyKwh}</strong>
+        <h3 className="text-gold-light text-lg font-bold mt-1">{product.name}</h3>
+        <h2 className="text-gold text-2xl font-extrabold my-2">Rp {product.priceDisplay}</h2>
+        <p className="text-sm text-slate-400">
+          ⚡ Estimasi harian: <strong className="text-slate-200">{product.dailyKwh}</strong>
         </p>
-        <p style={{ fontSize: '0.9rem', color: '#8892B0' }}>
-          💰 Penghematan: <strong>{product.monthlySavings}/bln</strong>
+        <p className="text-sm text-slate-400">
+          💰 Penghematan: <strong className="text-slate-200">{product.monthlySavings}/bln</strong>
         </p>
       </div>
 
-      <div style={{ marginTop: '1.5rem', display: 'flex', gap: '0.5rem' }}>
+      <div className="mt-6 flex gap-2">
         <button
           onClick={handleDetail}
-          style={{
-            flex: 1,
-            padding: '0.5rem',
-            backgroundColor: 'transparent',
-            color: '#D4AF37',
-            border: '1px solid #D4AF37',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}
+          className="flex-1 py-2 bg-transparent text-gold border border-gold rounded hover:bg-navy-light transition-colors"
         >
           Spesifikasi
         </button>
         <button
           onClick={() => addToCart(product)}
           disabled={isAdded}
-          style={{
-            flex: 1,
-            padding: '0.5rem',
-            backgroundColor: isAdded ? '#444' : '#D4AF37',
-            color: isAdded ? '#AAA' : '#0A192F',
-            border: 'none',
-            borderRadius: '4px',
-            fontWeight: 'bold',
-            cursor: isAdded ? 'not-allowed' : 'pointer'
-          }}
+          className={`flex-1 py-2 rounded font-bold transition-colors ${
+            isAdded
+              ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+              : 'bg-gold text-navy-dark hover:bg-gold-light'
+          }`}
         >
           {isAdded ? 'Dipilih' : '+ Pilih'}
         </button>

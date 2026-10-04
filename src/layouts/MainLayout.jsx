@@ -3,9 +3,9 @@ import Navbar from '../components/Navbar';
 
 const MainLayout = ({ children }) => {
   return (
-    <div style={{ backgroundColor: '#0A192F', minHeight: '100vh', color: '#FFF' }}>
+    <div className="bg-navy-dark min-h-screen text-white">
       <Navbar />
-      <main style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <main className="p-8 max-w-6xl mx-auto">
         {children}
       </main>
     </div>

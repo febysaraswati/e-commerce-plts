@@ -5,29 +5,17 @@ const Sidebar = () => {
   const { setActivePage, activePage } = useContext(CartContext);
 
   return (
-    <aside style={{
-      width: '220px',
-      backgroundColor: '#0A192F',
-      borderRight: '1px solid #D4AF37',
-      padding: '1.5rem',
-      color: '#FFF',
-      minHeight: 'calc(100vh - 80px)'
-    }}>
-      <h3 style={{ color: '#D4AF37', marginBottom: '1rem' }}>Menu Admin</h3>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        <li style={{ marginBottom: '10px' }}>
+    <aside className="w-56 bg-navy-dark border-r border-gold p-6 text-white min-h-[calc(100vh-80px)]">
+      <h3 className="text-gold font-bold text-lg mb-4">Menu Admin</h3>
+      <ul className="space-y-2 p-0 list-none">
+        <li>
           <button
             onClick={() => setActivePage('admin')}
-            style={{
-              width: '100%',
-              textAlign: 'left',
-              padding: '0.5rem',
-              backgroundColor: activePage === 'admin' ? '#D4AF37' : 'transparent',
-              color: activePage === 'admin' ? '#0A192F' : '#FFF',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className={`w-full text-left p-2 rounded transition-colors ${
+              activePage === 'admin'
+                ? 'bg-gold text-navy-dark font-semibold'
+                : 'bg-transparent text-white hover:bg-navy-light'
+            }`}
           >
             📊 Dashboard Ringkasan
           </button>
@@ -35,16 +23,11 @@ const Sidebar = () => {
         <li>
           <button
             onClick={() => setActivePage('about')}
-            style={{
-              width: '100%',
-              textAlign: 'left',
-              padding: '0.5rem',
-              backgroundColor: activePage === 'about' ? '#D4AF37' : 'transparent',
-              color: activePage === 'about' ? '#0A192F' : '#FFF',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
+            className={`w-full text-left p-2 rounded transition-colors ${
+              activePage === 'about'
+                ? 'bg-gold text-navy-dark font-semibold'
+                : 'bg-transparent text-white hover:bg-navy-light'
+            }`}
           >
             ℹ️ Info Perusahaan
           </button>

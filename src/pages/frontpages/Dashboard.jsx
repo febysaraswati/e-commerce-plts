@@ -5,7 +5,6 @@ import ProductCard from '../../components/ProductCard';
 const Dashboard = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Conditional Filtering
   const filteredPackages = solarPackages.filter(pkg =>
     pkg.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     pkg.capacity.toLowerCase().includes(searchTerm.toLowerCase())
@@ -13,9 +12,9 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ color: '#D4AF37' }}>Energi Cerdas untuk Masa Depan</h1>
-        <p style={{ color: '#8892B0' }}>
+      <div className="text-center mb-8">
+        <h1 className="text-3xl font-extrabold text-gold mb-2">Energi Cerdas untuk Masa Depan</h1>
+        <p className="text-slate-400 max-w-2xl mx-auto">
           VelaSolaris membantu kebutuhan energi hunian modern dan sektor industri secara optimal melalui PLTS Off-Grid Hybrid.
         </p>
 
@@ -24,24 +23,11 @@ const Dashboard = () => {
           placeholder="Cari kapasitas PLTS (contoh: 2600 Wp)..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            width: '100%',
-            maxWidth: '400px',
-            padding: '0.75rem',
-            borderRadius: '4px',
-            border: '1px solid #D4AF37',
-            backgroundColor: '#112240',
-            color: '#FFF',
-            marginTop: '1rem'
-          }}
+          className="w-full max-w-md p-3 rounded border border-gold bg-navy-card text-white mt-4 focus:outline-none focus:ring-2 focus:ring-gold"
         />
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-        gap: '1.5rem'
-      }}>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredPackages.map(pkg => (
           <ProductCard key={pkg.id} product={pkg} />
         ))}

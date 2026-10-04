@@ -4,7 +4,7 @@ export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [activePage, setActivePage] = useState('dashboard'); // State halaman aktif
+  const [activePage, setActivePage] = useState('dashboard');
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const addToCart = (product) => {
