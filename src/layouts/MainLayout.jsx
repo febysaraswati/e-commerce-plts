@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const MainLayout = ({ children }) => {
@@ -6,7 +7,7 @@ const MainLayout = ({ children }) => {
     <div className="bg-navy-dark min-h-screen text-white">
       <Navbar />
       <main className="p-8 max-w-6xl mx-auto">
-        {children}
+        <Outlet />
       </main>
     </div>
   );

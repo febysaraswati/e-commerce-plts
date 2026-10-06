@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
+import { Outlet } from 'react-router-dom';
 
 const AdminLayout = ({ children }) => {
   return (
@@ -9,7 +10,7 @@ const AdminLayout = ({ children }) => {
       <div className="flex">
         <Sidebar />
         <main className="flex-1 p-8">
-          {children}
+          <Outlet />
         </main>
       </div>
     </div>
