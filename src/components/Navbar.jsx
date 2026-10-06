@@ -1,36 +1,42 @@
 import React, { useContext } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const Navbar = () => {
-  const { cartItems, setActivePage, activePage } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
+  const location = useLocation();
+
+  const isHome = location.pathname === '/' || location.pathname.startsWith('/product');
+  const isCart = location.pathname === '/cart' || location.pathname === '/checkout';
+  const isAdmin = location.pathname.startsWith('/admin');
 
   return (
     <header className="bg-navy-dark border-b-2 border-gold px-8 py-4 flex justify-between items-center text-white shadow-md">
-      <div>
-        <h2 className="m-0 text-gold text-2xl font-bold tracking-wider">
+      <Link to="/" className="no-underline">
+        <h2 className="m-0 text-gold text-2xl font-bold tracking-wider hover:opacity-90 transition-opacity">
           VELASOLARIS
         </h2>
         <span className="text-xs text-gold-accent">
           Solusi Energi Terintegrasi PLTS
         </span>
-      </div>
+      </Link>
 
       <nav className="flex gap-4 items-center">
-        <button
-          onClick={() => setActivePage('dashboard')}
-          className={`px-4 py-2 rounded font-bold border border-gold transition-colors ${
-            activePage === 'dashboard'
+        <Link
+          to="/"
+          className={`px-4 py-2 rounded font-bold border border-gold transition-colors inline-block ${
+            isHome && !isCart && !isAdmin
               ? 'bg-gold text-navy-dark'
               : 'bg-transparent text-white hover:bg-navy-light'
           }`}
         >
           Katalog Paket
-        </button>
+        </Link>
 
-        <button
-          onClick={() => setActivePage('cart')}
-          className={`px-4 py-2 rounded font-bold border border-gold relative transition-colors ${
-            activePage === 'cart'
+        <Link
+          to="/cart"
+          className={`px-4 py-2 rounded font-bold border border-gold relative transition-colors inline-block ${
+            isCart
               ? 'bg-gold text-navy-dark'
               : 'bg-transparent text-white hover:bg-navy-light'
           }`}
@@ -41,18 +47,18 @@ const Navbar = () => {
               {cartItems.length}
             </span>
           )}
-        </button>
+        </Link>
 
-        <button
-          onClick={() => setActivePage('admin')}
-          className={`px-4 py-2 rounded border border-gold-accent transition-colors ${
-            activePage === 'admin'
+        <Link
+          to="/admin"
+          className={`px-4 py-2 rounded border border-gold-accent font-bold transition-colors inline-block ${
+            isAdmin
               ? 'bg-gold text-navy-dark'
               : 'bg-transparent text-gold-accent hover:bg-navy-light'
           }`}
         >
           Admin Mode
-        </button>
+        </Link>
       </nav>
     </header>
   );

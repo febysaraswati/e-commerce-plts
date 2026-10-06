@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 
 const Cart = () => {
-  const { cartItems, removeFromCart, setActivePage } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { cartItems, removeFromCart } = useContext(CartContext);
 
   if (cartItems.length === 0) {
     return (
@@ -10,7 +12,7 @@ const Cart = () => {
         <h2 className="text-2xl font-bold text-gold mb-2">Belum ada paket PLTS yang dipilih</h2>
         <p className="text-slate-400 mb-6">Pilih paket instalasi PLTS dari katalog untuk mengajukan konsultasi.</p>
         <button
-          onClick={() => setActivePage('dashboard')}
+          onClick={() => navigate('/')}
           className="px-6 py-3 bg-gold text-navy-dark font-bold rounded hover:bg-gold-light transition-colors"
         >
           Lihat Katalog Paket
@@ -45,7 +47,7 @@ const Cart = () => {
 
       <div className="text-right mt-8">
         <button
-          onClick={() => setActivePage('checkout')}
+          onClick={() => navigate('/checkout')}
           className="px-8 py-3 bg-gold text-navy-dark font-bold text-lg rounded hover:bg-gold-light transition-colors"
         >
           Lanjut ke Formulir Konsultasi →

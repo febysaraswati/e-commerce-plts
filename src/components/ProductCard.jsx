@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const ProductCard = ({ product }) => {
-  const { addToCart, cartItems, setSelectedProduct, setActivePage } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { addToCart, cartItems, setSelectedProduct } = useContext(CartContext);
   const isAdded = cartItems.some(item => item.id === product.id);
 
   const handleDetail = () => {
     setSelectedProduct(product);
-    setActivePage('detail');
+    navigate(`/product/${product.id}`);
   };
 
   return (

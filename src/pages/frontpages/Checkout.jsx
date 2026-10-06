@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../context/CartContext';
 
 const Checkout = () => {
-  const { clearCart, setActivePage } = useContext(CartContext);
+  const navigate = useNavigate();
+  const { clearCart } = useContext(CartContext);
   const [formData, setFormData] = useState({ name: '', phone: '', address: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -13,7 +15,7 @@ const Checkout = () => {
 
   const handleDone = () => {
     clearCart();
-    setActivePage('dashboard');
+    navigate('/');
   };
 
   if (submitted) {
