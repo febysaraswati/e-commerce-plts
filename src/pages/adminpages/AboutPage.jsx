@@ -12,7 +12,7 @@ const AboutPage = () => {
 
       <h3 className="text-lg font-bold text-gold-accent mb-3">Kontak Resmi:</h3>
       <div className="space-y-1 text-slate-400">
-        <p>📞 WhatsApp: +62 823 1000 1567</p>
+        <p>📞 WhatsApp: +62 813 1837 4450</p>
         <p>✉️ Email: sales.velasolaris@gmail.com</p>
         <p>🌐 Instagram: @velasolaris.id</p>
       </div>
